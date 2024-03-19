@@ -18,7 +18,7 @@ class CreateInput {
         required: true,
         type: () => EnumDto
     })
-    enumTest!: EnumDto;
+    enumTest!: "yellow" | "red" | "green";
 }
 
 export { CreateInput as CreateInput };
