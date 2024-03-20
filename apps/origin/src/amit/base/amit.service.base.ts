@@ -11,6 +11,8 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { PrismaService } from "../../prisma/prisma.service";
 import { Prisma, Amit as PrismaAmit } from "@prisma/client";
+import { AmitCountArgs } from "./AmitCountArgs";
+import { Amit } from "./Amit";
 
 export class AmitServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
@@ -45,5 +47,8 @@ export class AmitServiceBase {
     args: Prisma.SelectSubset<T, Prisma.AmitDeleteArgs>
   ): Promise<PrismaAmit> {
     return this.prisma.amit.delete(args);
+  }
+  async Bj(args: AmitCountArgs): Promise<Amit> {
+    throw new Error("Not implemented");
   }
 }

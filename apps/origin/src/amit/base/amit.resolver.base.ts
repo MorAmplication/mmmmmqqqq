@@ -86,4 +86,12 @@ export class AmitResolverBase {
       throw error;
     }
   }
+
+  @graphql.Query(() => Amit)
+  async Bj(
+    @graphql.Args()
+    args: AmitCountArgs
+  ): Promise<Amit> {
+    return this.service.Bj(args);
+  }
 }
