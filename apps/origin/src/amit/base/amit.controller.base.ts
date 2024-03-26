@@ -22,6 +22,7 @@ import { Amit } from "./Amit";
 import { AmitFindManyArgs } from "./AmitFindManyArgs";
 import { AmitWhereUniqueInput } from "./AmitWhereUniqueInput";
 import { AmitUpdateInput } from "./AmitUpdateInput";
+import { AmitCountArgs } from "./AmitCountArgs";
 
 export class AmitControllerBase {
   constructor(protected readonly service: AmitService) {}
@@ -130,5 +131,22 @@ export class AmitControllerBase {
       }
       throw error;
     }
+  }
+
+  @common.Get("/:id/bj")
+  @swagger.ApiOkResponse({
+    type: Amit,
+  })
+  @swagger.ApiNotFoundResponse({
+    type: errors.NotFoundException,
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async Bj(
+    @common.Body()
+    body: AmitCountArgs
+  ): Promise<Amit> {
+    return this.service.Bj(body);
   }
 }
