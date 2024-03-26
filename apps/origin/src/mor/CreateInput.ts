@@ -1,9 +1,10 @@
-import { ObjectType, Field } from "@nestjs/graphql";
+import { ArgsType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { Type } from "class-transformer";
 import { EnumDto } from "./EnumDto";
+import { Bjojno } from "./Bjojno";
 
-@ObjectType()
+@ArgsType()
 class CreateInput {
     @Field(() => String)
     @ApiProperty({
@@ -16,9 +17,16 @@ class CreateInput {
     @Field(() => EnumDto)
     @ApiProperty({
         required: true,
-        type: () => EnumDto
+        enum: EnumDto
     })
     enumTest!: "yellow" | "red" | "green";
+
+    @Field(() => Bjojno)
+    @ApiProperty({
+        required: true,
+        enum: Bjojno
+    })
+    testDtoMembers!: "hnhl";
 }
 
 export { CreateInput as CreateInput };
